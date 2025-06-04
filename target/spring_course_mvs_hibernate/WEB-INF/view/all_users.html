@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+
+    <br>
+    <h1>ALL USERS</h1>
+    <br>
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Возраст</th>
+            <th scope="col">Операции</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user: ${allUs}">
+
+            <td th:text="${user.id}"/>
+            <td th:text="${user.name}"/>
+            <td th:text="${user.surname}"/>
+            <td th:text="${user.age}"/>
+
+            <td>
+                <div class="row">
+                    <a th:href="@{/updateInfo(usID=${user.id})}" th:attr="name='usID'" th:value="${user.id}"
+                       class="btn btn-success btn-sm mb-3 mr-1">Update
+                    </a>
+
+                    <form th:method="POST" th:action="@{/deleteUser(usID=${user.id})}" th:attr="name='usID'"
+                          th:value="${user.id}">
+                        <input type="submit" value="Delete" class="btn btn-danger btn-sm mb-3"/>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <hr>
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{add_new_user}"
+               class="btn btn-primary btn-sm mb-3">Add User</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
