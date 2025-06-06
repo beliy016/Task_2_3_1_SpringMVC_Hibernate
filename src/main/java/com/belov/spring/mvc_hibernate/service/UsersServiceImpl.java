@@ -40,6 +40,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
+    @Transactional
     public void removeUser(int id) {
         User user = getUser(id);
         if (user != null) {
