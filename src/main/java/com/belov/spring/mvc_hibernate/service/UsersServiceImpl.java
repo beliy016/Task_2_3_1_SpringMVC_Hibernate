@@ -28,7 +28,9 @@ public class UsersServiceImpl implements UsersService {
     @Override
     @Transactional
     public void updateUser(User user) {
-        usersDAO.updateUser(user);
+        if (usersDAO.getUser(user.getId()) != null) {
+            usersDAO.updateUser(user);
+        }
     }
 
     @Override
@@ -39,6 +41,9 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public void removeUser(int id) {
-        usersDAO.removeUser(id);
+        User user = usersDAO.getUser(id);
+        if (user != null) {
+            usersDAO.removeUser(user);
+        }
     }
 }

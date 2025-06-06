@@ -13,5 +13,5 @@ public interface UsersDAO {
 
     public User getUser(int id);
 
-    public void removeUser(int id);
+    public void removeUser(User user);
 }

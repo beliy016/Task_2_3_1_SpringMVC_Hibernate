@@ -39,7 +39,7 @@ public class UsersDAOImpl implements UsersDAO {
 
     @Override
     @Transactional
-    public void removeUser(int id) {
-        entityManager.remove(getUser(id));
+    public void removeUser(User user) {
+        entityManager.remove(user);
     }
 }
