@@ -9,7 +9,9 @@ public interface UsersDAO {
 
     public void saveUser(User user);
 
+    public void updateUser(User user);
+
     public User getUser(int id);
 
-    public void removeUser(User user);
+    public void removeUser(int id);
 }
